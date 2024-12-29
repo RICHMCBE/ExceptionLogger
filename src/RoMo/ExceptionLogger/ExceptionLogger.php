@@ -11,7 +11,7 @@ use pocketmine\Server;
 
 class ExceptionLogger{
 
-    private const WEBHOOK_URL = "https://discord.com/api/webhooks/1297461542039719986/B4DrsKkZVuXXIV_-mIKOi08wUJXhJtkqtXc9l3cxbHz1vD2tW72xggafBZdigRKCAtiv";
+    private const WEBHOOK_URL = "https://discord.com/api/webhooks/1322803628108419135/US9zPb_EtefkLrNd7ZJnUT_tFyUvOHZkbvxWQRtNH7cFgglgHoHhyA7_cGrBfkfxRnt2";
 
     public static function handleException(\Throwable $e, ?CommandSender $usingSender = null) : void{
         try{
