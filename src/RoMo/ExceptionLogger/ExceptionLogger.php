@@ -11,7 +11,8 @@ use pocketmine\Server;
 
 class ExceptionLogger{
 
-    private const WEBHOOK_URL = "https://discord.com/api/webhooks/1322803628108419135/US9zPb_EtefkLrNd7ZJnUT_tFyUvOHZkbvxWQRtNH7cFgglgHoHhyA7_cGrBfkfxRnt2";
+    private const WEBHOOK_URL = "https://discord.com/api/webhooks/1359086375911161976/Pn9KuQEtAeVC_KbNbqeRsQ8uWU_768IKE8CNyGY93fELETGYo6RfO-H4mmldUVdwyUxT";
+    private const ROLE_ID = "1359085817783390248"
 
     public static function handleException(\Throwable $e, ?CommandSender $usingSender = null) : void{
         try{
@@ -34,11 +35,9 @@ class ExceptionLogger{
             $usingSender?->sendMessage("§l§6 • §r§7관리자에게 해당 메시지가 포함된 스크린샷과 함께 문의해주세요.");
 
             if(class_exists(DiscordCore::class)){
-                // 1144216952311648328: 운영지 Role ID
-                // 1145239939303350374: 개발자 Role ID
                 $webhook = new Webhook();
                 $webhook->setName("ExceptionLogger" . ($usingSender === null ? "" : ": " . $usingSender->getName()))
-                    ->setContent("**오류 메시지**: {$e->getMessage()}\n\n자세한 오류는 **{$fileName}**를 확인해주세요.\n\n<@&1144216952311648328> <@&1145239939303350374>")
+                    ->setContent("**오류 메시지**: {$e->getMessage()}\n\n자세한 오류는 **{$fileName}**를 확인해주세요.\n\n<@&" . self::ROLE_ID . ">")
                     ->send(self::WEBHOOK_URL);
             }
         }catch(\Throwable $error){
